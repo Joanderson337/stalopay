@@ -41,6 +41,10 @@ export const Form = styled.form`
   flex-direction: column;
   gap: 32px;
   align-items: center;
+
+  .containerSubmit{
+    margin-bottom: 90px;
+  }
 `
 
 export const ConatainerInput = styled.div`

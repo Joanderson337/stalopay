@@ -7,11 +7,13 @@ import { useState } from 'react'
 import { Button } from '@/components/Button/button'
 import {
   ConatainerInput,
+  ContainerMessage,
   ContainerRecover,
   ContextContainer,
   ContextInput,
   Form,
-  IconWrapper
+  IconWrapper,
+  StyledP
 } from './styled'
 import { schema } from './schema'
 
@@ -22,6 +24,7 @@ import { RegisterSuccess } from '../RegisterSuccess/registerSuccess'
 import { handleLogin } from '@/utils/handleNavigate'
 import { InputMask } from '@/components/InputMask/inputMask'
 import { ContainerSubmit, ContextTitle } from '@/styles/default'
+import { MessageErrorList } from '@/components/MessageErrorList/messageErrorList'
 import { MessageError } from '@/components/MessageError/messageError'
 
 type FormData = {
@@ -102,37 +105,9 @@ export function PasswordRegister() {
                     hasSixCharacters
                   }
                 />
-                {errors.password && <MessageError>{errors.password.message}</MessageError>}
-                {password && !hasLowercase && (
-                  <MessageError>
-                    A senha deve conter pelo menos uma letra minúscula
-                  </MessageError>
+                {errors.password && (
+                  <MessageError>{errors.password.message}</MessageError>
                 )}
-                {password && hasLowercase && !hasUppercase && (
-                  <MessageError>
-                    A senha deve conter pelo menos uma letra maiúscula
-                  </MessageError>
-                )}
-                {password && hasLowercase && hasUppercase && !hasNumber && (
-                  <MessageError>A senha deve conter pelo menos um número</MessageError>
-                )}
-                {password &&
-                  hasLowercase &&
-                  hasUppercase &&
-                  hasNumber &&
-                  !hasSpecialChar && (
-                    <MessageError>
-                      A senha deve conter pelo menos um caractere especial
-                    </MessageError>
-                  )}
-                {password &&
-                  hasLowercase &&
-                  hasUppercase &&
-                  hasNumber &&
-                  hasSpecialChar &&
-                  !hasSixCharacters && (
-                    <MessageError>A senha deve ter pelo menos 6 caracteres</MessageError>
-                  )}
               </ContextInput>
             </ConatainerInput>
 
@@ -161,7 +136,32 @@ export function PasswordRegister() {
                 )}
               </ContextInput>
             </ConatainerInput>
-            <ContainerSubmit>
+            <ContainerMessage>
+              <StyledP success={hasLowercase && hasUppercase && hasNumber && hasSpecialChar && hasSixCharacters}> A senha deve conter pelo menos: </StyledP>
+              <ul>
+
+                  <MessageErrorList success={hasLowercase}>
+                    Uma letra minúscula
+                  </MessageErrorList>
+
+                  <MessageErrorList success={hasUppercase}>
+                    Uma letra maiúscula
+                  </MessageErrorList>
+
+                  <MessageErrorList success={hasNumber}>Um número</MessageErrorList>
+
+                  <MessageErrorList success={hasSpecialChar}>
+                    Um caractere especial
+                  </MessageErrorList>
+
+                  <MessageErrorList success={hasSixCharacters}>
+                    Pelo menos 6 caracteres
+                  </MessageErrorList>
+
+              </ul>
+            </ContainerMessage>
+
+            <ContainerSubmit className='containerSubmit'>
               <Button
                 type="submit"
                 colorBackground={ThemeColor.secundaria}

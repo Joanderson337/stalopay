@@ -64,7 +64,6 @@ export const DefaultContext = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 90px;
   width: 50%;
   height: 100vh;
   margin: 0px 20px;
@@ -82,6 +81,9 @@ export const DefaultContext = styled.div`
   }
 
   > span {
+    position: fixed;
+    padding-bottom: 25px;
+  bottom: 0;
     font-weight: 400;
 font-size: 14px;
 line-height: 24px;

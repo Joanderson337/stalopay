@@ -96,7 +96,7 @@ export function PasswordRecover() {
               </ContextInput>
             </ConatainerInput>
 
-              <ContainerSubmit>
+              <ContainerSubmit className='containerSubmit'>
             <Button
               type="submit"
               colorBackground={ThemeColor.secundaria}

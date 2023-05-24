@@ -5,7 +5,7 @@ export const ContainerRecover = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 32px;
+  gap: 16px;
   width: 100%;
   max-width: 426px;
 `
@@ -14,7 +14,7 @@ export const ContextContainer = styled.div`
   width: 366px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
 
   > button {
     display: flex;
@@ -39,8 +39,12 @@ export const ContextContainer = styled.div`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
   align-items: center;
+
+  .containerSubmit{
+    margin-bottom: 50px;
+  }
 `
 
 export const ConatainerInput = styled.div`
@@ -71,4 +75,24 @@ export const IconWrapper = styled.div`
     font-size: 2.4rem;
   }
 `;
+
+
+export const ContainerMessage = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  width: 100%;
+
+  > ul {
+    margin-left: 20px;
+  }
+`
+
+export const StyledP = styled.p<{ success?: boolean }>`
+font-size: 16px;
+font-weight: bold;
+margin-bottom: 16px;
+color: ${({ success }) => (success ? '#07A8D2' : '#7D7D7D')};
+`;
+
 
