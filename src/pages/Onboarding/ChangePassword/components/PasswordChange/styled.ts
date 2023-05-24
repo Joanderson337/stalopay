@@ -58,6 +58,12 @@ export const Form = styled.form`
   .containerSubmit{
     margin-bottom: 90px;
   }
+
+  @media (max-width: 600px) {
+    .containerSubmit{
+    margin-bottom: 0px;
+  }
+  }
 `
 
 export const ConatainerInput = styled.div`

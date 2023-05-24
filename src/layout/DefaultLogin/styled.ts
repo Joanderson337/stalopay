@@ -81,9 +81,6 @@ export const DefaultContext = styled.div`
   }
 
   > span {
-    position: fixed;
-    padding-bottom: 25px;
-  bottom: 0;
     font-weight: 400;
 font-size: 14px;
 line-height: 24px;
@@ -93,7 +90,6 @@ color: ${({ theme }) => theme.black_sys};
 
   @media (max-width: 600px) {
     > span {
-      padding-bottom: 0px;
       margin-bottom: 20px;
     }
   }

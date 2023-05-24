@@ -25,5 +25,4 @@ export const defaultTheme = {
   neutral_dark_hover: '#4b4b4b',
   neutral_dark_active: '#383838',
   neutral_darker: '#2c2c2c'
-
 }
