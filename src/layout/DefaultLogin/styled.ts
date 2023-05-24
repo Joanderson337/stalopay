@@ -93,6 +93,7 @@ color: ${({ theme }) => theme.black_sys};
 
   @media (max-width: 600px) {
     > span {
+      padding-bottom: 0px;
       margin-bottom: 20px;
     }
   }
