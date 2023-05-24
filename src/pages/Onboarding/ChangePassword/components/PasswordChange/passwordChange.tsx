@@ -13,7 +13,6 @@ import {
   ContextInput,
   Form,
   IconWrapper,
-  StyledP
 } from './styled'
 
 import { schema } from './schema'
@@ -27,6 +26,7 @@ import { InputMask } from '@/components/InputMask/inputMask'
 import { ContainerSubmit, ContextTitle, } from '@/styles/default'
 import { MessageError } from '@/components/MessageError/messageError'
 import { MessageErrorList } from '@/components/MessageErrorList/messageErrorList'
+import { StyledP } from '@/components/MessageErrorList/styled'
 
 type FormData = {
   password: string

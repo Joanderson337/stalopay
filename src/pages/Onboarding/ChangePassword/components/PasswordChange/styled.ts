@@ -94,10 +94,4 @@ export const ContainerMessage = styled.div`
   }
 `
 
-export const StyledP = styled.p<{ success?: boolean }>`
-font-size: 16px;
-font-weight: bold;
-margin-bottom: 16px;
-color: ${({ success }) => (success ? '#07A8D2' : '#7D7D7D')};
-`;
 
