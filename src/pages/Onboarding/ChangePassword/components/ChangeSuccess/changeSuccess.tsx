@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { ThemeColor } from '@/config/color'
 import { ButtonText, SuccessChange } from '@/config/text'
 import { handleLogin } from '@/utils/handleNavigate'
+import { ContainerSubmit } from '@/styles/default'
 
 export function ChangeSuccess() {
   const navigate = useNavigate()
@@ -18,6 +19,7 @@ export function ChangeSuccess() {
         <p>{SuccessChange.successText}</p>
       </ContextTitle>
 
+      <ContainerSubmit   className='containerSubmit'>
       <Button
         type="button"
         onClick={() => handleLogin(navigate)}
@@ -25,6 +27,7 @@ export function ChangeSuccess() {
         success={true}
         title={ButtonText.irLogin}
       />
+      </ContainerSubmit>
     </ContainerRecover>
   )
 }

@@ -7,11 +7,13 @@ import { useState } from 'react'
 import { Button } from '@/components/Button/button'
 import {
   ConatainerInput,
+  ContainerMessage,
   ContainerRecover,
   ContextContainer,
   ContextInput,
   Form,
-  IconWrapper
+  IconWrapper,
+  StyledP
 } from './styled'
 
 import { schema } from './schema'
@@ -22,8 +24,9 @@ import { ButtonText, ChangePassword, Placeholder } from '@/config/text'
 import { ChangeSuccess } from '../ChangeSuccess/changeSuccess'
 import { handleLogin } from '@/utils/handleNavigate'
 import { InputMask } from '@/components/InputMask/inputMask'
-import { ContainerSubmit, ContextTitle } from '@/styles/default'
+import { ContainerSubmit, ContextTitle, } from '@/styles/default'
 import { MessageError } from '@/components/MessageError/messageError'
+import { MessageErrorList } from '@/components/MessageErrorList/messageErrorList'
 
 type FormData = {
   password: string
@@ -49,6 +52,11 @@ export function PasswordChange({ email }: Props) {
 
   const password = watch('password')
   const passwordConfirm = watch('passwordConfirm')
+  const hasLowercase = /[a-z]/.test(password || '')
+  const hasUppercase = /[A-Z]/.test(password || '')
+  const hasNumber = /[0-9]/.test(password || '')
+  const hasSpecialChar = /\W/.test(password || '')
+  const hasSixCharacters = (password || '').length >= 6
 
   const onSubmit = (data: FormData) => {
     console.log(data)
@@ -85,14 +93,21 @@ export function PasswordChange({ email }: Props) {
                   placeholder={Placeholder.placeholderNova}
                   {...register('password')}
                   hasError={
-                    !!errors.passwordConfirm ||
-                    (passwordConfirm && password !== passwordConfirm) ||
-                    (!!errors.password &&
-                      errors.password.type === 'required') ||
-                    (password && password.length < 6) ||
-                    undefined
+                    !!errors.password ||
+                    (password &&
+                      (!hasLowercase ||
+                        !hasUppercase ||
+                        !hasNumber ||
+                        !hasSpecialChar ||
+                        !hasSixCharacters)) ||
+                    false
                   }
-                  hasSuccess={!errors.passwordConfirm && password?.length >= 6}
+                  hasSuccess={!errors.password &&
+                    hasLowercase &&
+                    hasUppercase &&
+                    hasNumber &&
+                    hasSpecialChar &&
+                    hasSixCharacters}
                 />
 
                 {errors.password && <MessageError>{errors.password.message}</MessageError>}
@@ -126,6 +141,30 @@ export function PasswordChange({ email }: Props) {
                 )}
               </ContextInput>
             </ConatainerInput>
+            <ContainerMessage>
+              <StyledP success={hasLowercase && hasUppercase && hasNumber && hasSpecialChar && hasSixCharacters}> A senha deve conter pelo menos: </StyledP>
+              <ul>
+
+                  <MessageErrorList success={hasLowercase}>
+                    Uma letra minúscula
+                  </MessageErrorList>
+
+                  <MessageErrorList success={hasUppercase}>
+                    Uma letra maiúscula
+                  </MessageErrorList>
+
+                  <MessageErrorList success={hasNumber}>Um número</MessageErrorList>
+
+                  <MessageErrorList success={hasSpecialChar}>
+                    Um caractere especial
+                  </MessageErrorList>
+
+                  <MessageErrorList success={hasSixCharacters}>
+                    Pelo menos 6 caracteres
+                  </MessageErrorList>
+
+              </ul>
+            </ContainerMessage>
             <ContainerSubmit className='containerSubmit'>
             <Button
               type="submit"

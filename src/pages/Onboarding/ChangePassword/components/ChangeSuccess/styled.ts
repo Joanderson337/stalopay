@@ -13,6 +13,15 @@ export const ContainerRecover = styled.div`
   width: 100%;
   max-width: 426px;
 
+  .containerSubmit{
+    margin-bottom: 90px;
+  }
+  @media (max-width: 600px) {
+    .containerSubmit{
+    margin-bottom: 0px;
+    }
+  }
+
   @media (max-width: 600px) {
     width: 326px;
   }

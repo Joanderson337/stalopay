@@ -28,7 +28,7 @@ export function RecoverSuccess({ email }: Props) {
           {RecoverPasswordSuccess.completeText}
         </p>
       </ContextTitle>
-      <ContainerSubmit>
+      <ContainerSubmit className='containerSubmit'>
       <Button
         type="button"
         onClick={handleLogin}
