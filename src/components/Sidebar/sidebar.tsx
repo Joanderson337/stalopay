@@ -2,7 +2,7 @@ import { ButtonSider, ContainerSidebar, Line, Logo, Menu } from './styled'
 
 import { BiHomeAlt } from 'react-icons/bi'
 import { Medal, Storefront, Book, Clipboard, Tag } from '@phosphor-icons/react'
-import { AiOutlinePercentage, AiOutlineFileText } from 'react-icons/Ai'
+// import { AiOutlinePercentage, AiOutlineFileText } from 'react-icons/Ai'
 import { SetStateAction, useState } from 'react'
 
 import { ThemeImg } from '@/config/img'
@@ -56,14 +56,14 @@ export function Sidebar() {
           selected={selectedItem === 4}
           onClick={() => handleButtonClick(4)}
         >
-          <AiOutlinePercentage /> {SidebarText.plano}
+          {/* <AiOutlinePercentage /> {SidebarText.plano} */}
         </ButtonSider>
         <ButtonSider
         colorSec={ThemeColor.secundaria}
           selected={selectedItem === 5}
           onClick={() => handleButtonClick(5)}
         >
-          <AiOutlineFileText /> {SidebarText.extrato}
+          {/* <AiOutlineFileText /> {SidebarText.extrato} */}
         </ButtonSider>
         <ButtonSider
         colorSec={ThemeColor.secundaria}
