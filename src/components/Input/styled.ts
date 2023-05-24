@@ -42,7 +42,7 @@ export const CustomInputContainer = styled.input<Props>`
   width: 100%;
   border-radius: 4px;
 
-  padding: 0 3rem;
+  padding: 0 16px;
   font-weight: 400;
     font-size: 14px;
     line-height: 24px;
